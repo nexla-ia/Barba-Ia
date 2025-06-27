@@ -10,14 +10,14 @@ export function ClientAppointments() {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center"
+      className="relative min-h-screen bg-cover bg-center"
       style={{
         backgroundImage:
           "url('https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
       }}
     >
-      <div className="min-h-screen bg-black/50 backdrop-blur text-white">
-        <div className="p-6 space-y-6 max-w-5xl mx-auto">
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-md" />
+      <div className="relative p-6 space-y-6 max-w-5xl mx-auto text-white">
           <h1 className="text-2xl font-bold">Meus Agendamentos</h1>
           <div className="overflow-x-auto">
             <table className="min-w-full text-sm">

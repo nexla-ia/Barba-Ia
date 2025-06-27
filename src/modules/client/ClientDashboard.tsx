@@ -41,8 +41,9 @@ export const ClientDashboard: FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-cover bg-center bg-[url('https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')">      
-      <div className="min-h-screen bg-black/50 backdrop-blur-md text-white px-6 lg:px-12 flex flex-col gap-6 max-w-5xl mx-auto">
+    <div className="relative min-h-screen bg-cover bg-center bg-[url('https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')">
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-md" />
+      <div className="relative min-h-screen text-white px-6 lg:px-12 flex flex-col gap-6 max-w-5xl mx-auto">
         {/* Welcome Section */}
         <section className="bg-gray-800 rounded-xl shadow-lg border border-amber-500 p-6">
           <h1 className="text-2xl font-bold mb-2">Bem-vindo, {user?.name || 'Cliente'}!</h1>
