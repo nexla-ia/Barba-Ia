@@ -1,46 +1,83 @@
+// src/components/Clients/ClientAppointmentsEnhanced.tsx
+
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ShieldAlert, ArrowLeft } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
+import { useScheduling } from '../../contexts/SchedulingContext';
+import { Scissors, Clock } from 'lucide-react';
 
-export function UnauthorizedPage() {
-  const navigate = useNavigate();
+interface Appointment {
+  id: string;
+  date: string;
+  startTime: string;
+  services: { name: string }[];
+  barberName: string;
+  status: string;
+  clientName: string;
+}
+
+export const ClientAppointmentsEnhanced: React.FC = () => {
   const { user } = useAuth();
+  const { state } = useScheduling();
 
-  const handleGoBack = () => {
-    // Redirect based on user role
-    if (user?.role === 'admin') {
-      navigate('/admin');
-    } else if (user?.role === 'employee') {
-      navigate('/employee');
-    } else if (user?.role === 'client') {
-      navigate('/client');
-    } else {
-      navigate('/');
-    }
-  };
+  const appointments: Appointment[] = state?.appointments
+    ?.filter(a => a.clientName === user?.name) ?? [];
 
   return (
-    <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4">
-      <div className="bg-white rounded-xl shadow-lg max-w-md w-full p-8 text-center">
-        <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <ShieldAlert className="w-10 h-10 text-red-600" />
-        </div>
-        
-        <h1 className="text-2xl font-bold text-slate-900 mb-3">Acesso Negado</h1>
-        
-        <p className="text-slate-600 mb-6">
-          Você não tem permissão para acessar esta página. Esta área requer privilégios adicionais.
-        </p>
-        
-        <button
-          onClick={handleGoBack}
-          className="inline-flex items-center px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Voltar para área permitida
-        </button>
+    <div className="relative min-h-screen">
+      {/* Background image blurred */}
+      <img
+        src="/images/barbershop.jpg"
+        alt="Barbearia"
+        className="absolute inset-0 w-full h-full object-cover filter blur-md"
+      />
+      {/* Overlay to darken slightly */}
+      <div className="absolute inset-0 bg-black/50" />
+
+      <div className="relative z-10 max-w-5xl mx-auto p-6 text-white">
+        <h1 className="text-3xl font-bold mb-6">Meus Agendamentos</h1>
+
+        {appointments.length > 0 ? (
+          <div className="grid gap-4">
+            {appointments.map(apt => (
+              <div
+                key={apt.id}
+                className="flex items-center justify-between bg-white/10 backdrop-blur-sm rounded-lg p-4"
+              >
+                <div>
+                  <div className="text-lg font-semibold flex items-center gap-2">
+                    <Scissors className="w-5 h-5 text-amber-400" />
+                    {apt.services.map(s => s.name).join(', ')}
+                  </div>
+                  <div className="text-sm text-gray-200 mt-1">
+                    {apt.date} às {apt.startTime}
+                  </div>
+                  <div className="text-sm text-gray-300 mt-1">
+                    Profissional: {apt.barberName}
+                  </div>
+                </div>
+                <div className="flex flex-col items-end">
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-medium  
+                      ${apt.status === 'confirmed' ? 'bg-green-600' : 'bg-yellow-600'}`}
+                  >
+                    {apt.status.charAt(0).toUpperCase() + apt.status.slice(1)}
+                  </span>
+                  <button
+                    className="mt-2 text-sm text-red-400 hover:underline"
+                    onClick={() => {/* TODO: cancelar agendamento */}}
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-gray-300">Você ainda não possui agendamentos.</p>
+        )}
       </div>
     </div>
   );
-}
+};
+
+export default ClientAppointmentsEnhanced;
