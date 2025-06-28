@@ -65,15 +65,6 @@ export function ClientHistoryPage() {
             </button>
           </div>
         )}
-        
-        <div className="fixed bottom-6 right-6">
-          <button 
-            onClick={() => window.history.back()}
-            className="bg-amber-500 text-black px-4 py-2 rounded-full shadow-lg hover:bg-amber-400 transition-all duration-300"
-          >
-            Voltar
-          </button>
-        </div>
       </div>
     </div>
   );

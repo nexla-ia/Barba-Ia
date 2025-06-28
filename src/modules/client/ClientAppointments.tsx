@@ -131,15 +131,6 @@ export const ClientAppointments: React.FC = () => {
           </div>
         )}
         
-        <div className="fixed bottom-6 right-6 md:hidden">
-          <button 
-            onClick={() => navigate('/client')}
-            className="bg-amber-500 text-black p-3 rounded-full shadow-lg hover:bg-amber-400 transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
-        </div>
-        
         <div className="fixed bottom-6 right-6">
           <button 
             onClick={() => window.history.back()}
