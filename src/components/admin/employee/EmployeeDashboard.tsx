@@ -20,9 +20,6 @@ export function EmployeeDashboard() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
-  const { user, logout } = useAuth();
-  const navigate = useNavigate();
-
   return (
     <div
       className="relative min-h-screen bg-cover bg-center bg-fixed"
