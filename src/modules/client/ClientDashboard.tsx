@@ -61,16 +61,16 @@ export const ClientDashboard: FC = () => {
         </section>
 
         {/* Quick Actions */}
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 service-boxes">
           {quickActions.map(action => (
             <button
               key={action.key}
               onClick={action.onClick}
-              className="bg-black/40 backdrop-blur-sm rounded-xl shadow-lg border border-amber-500/50 p-6 hover:bg-black/60 transition-all hover:-translate-y-1 duration-300 text-left"
+              className="bg-black/40 backdrop-blur-sm rounded-xl shadow-lg border border-amber-500/50 p-6 hover:bg-black/60 transition-all hover:-translate-y-1 duration-300 text-left h-[160px] flex items-center"
             >
-              <div className="flex flex-col items-center sm:items-start sm:flex-row sm:space-x-4">
-                <div className={`${action.bg} p-3 rounded-full mb-3 sm:mb-0`}>{action.icon}</div>
-                <div className="text-center sm:text-left">
+              <div className="flex flex-col items-center sm:items-start sm:flex-row sm:space-x-4 w-full">
+                <div className={`${action.bg} p-3 rounded-full mb-3 sm:mb-0 flex-shrink-0`}>{action.icon}</div>
+                <div className="text-center sm:text-left flex-grow">
                   <h3 className="font-semibold text-amber-200">{action.label}</h3>
                   <p className="text-sm text-gray-300 mt-1">{action.desc}</p>
                 </div>
@@ -165,7 +165,7 @@ export const ClientDashboard: FC = () => {
         <div className="mt-auto flex justify-end pt-4">
           <button
             onClick={logout} 
-            className="flex items-center gap-2 px-4 py-2 bg-black/40 border border-red-500/50 text-white rounded-lg shadow-lg hover:bg-black/60 transition-all duration-300"
+            className="flex items-center gap-2 px-4 py-2 bg-black/40 border border-red-500/50 text-white rounded-lg shadow-lg hover:bg-red-500 hover:border-red-600 hover:text-white transition-all duration-300"
           >
             <LogOut className="w-4 h-4" />
             Sair

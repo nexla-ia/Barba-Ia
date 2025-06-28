@@ -93,7 +93,7 @@ export const ClientAppointments: React.FC = () => {
                 <div key={apt.id} className="bg-black/40 rounded-lg p-4 border border-gray-700">
                   <div className="flex justify-between items-start mb-2">
                     <div className="flex items-center">
-                      <Clock className="w-4 h-4 text-amber-400 mr-2" />
+                      <Clock className="w-4 h-4 text-amber-400 mr-2 flex-shrink-0" />
                       <span className="text-amber-200 font-medium">{apt.date} • {apt.startTime}</span>
                     </div>
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${
@@ -109,7 +109,7 @@ export const ClientAppointments: React.FC = () => {
                     <h3 className="font-medium text-white">{apt.services.map(s => s.name).join(', ')}</h3>
                   </div>
                   <div className="flex items-center text-sm text-gray-300">
-                    <User className="w-4 h-4 mr-2 text-gray-400" />
+                    <User className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" />
                     <span>{apt.barberName}</span>
                   </div>
                 </div>
