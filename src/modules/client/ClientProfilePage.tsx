@@ -90,11 +90,17 @@ export function ClientProfilePage() {
       <div className="relative min-h-screen text-white p-4 sm:p-6 md:p-8">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-2xl md:text-3xl font-bold flex items-center space-x-2">
+            <h1 className="text-2xl md:text-3xl font-bold flex items-center">
               <User className="w-6 h-6 mr-2 text-amber-400" />
               Meu Perfil
             </h1>
-            <div></div>
+            <button 
+              onClick={() => navigate('/client')}
+              className="flex items-center space-x-2 px-3 py-2 bg-black/30 hover:bg-black/50 rounded-lg transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="hidden sm:inline">Voltar</span>
+            </button>
           </div>
           
           <div className="bg-black/40 backdrop-blur-sm rounded-xl border border-gray-700 overflow-hidden">
@@ -281,6 +287,15 @@ export function ClientProfilePage() {
               )}
             </div>
           </div>
+        </div>
+        
+        <div className="fixed bottom-6 right-6">
+          <button 
+            onClick={() => navigate('/client')}
+            className="bg-amber-500 text-black px-4 py-2 rounded-full shadow-lg hover:bg-amber-400 transition-all duration-300"
+          >
+            Voltar
+          </button>
         </div>
       </div>
     </div>
