@@ -30,11 +30,11 @@ export function ClientHistoryPage() {
         </div>
         
         {client && client.serviceHistory.length > 0 ? (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-h-[calc(100vh-150px)] overflow-y-auto pr-1">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-h-[calc(100vh-150px)] overflow-y-auto pr-1 service-boxes">
             {client.serviceHistory.map(service => (
               <div 
                 key={service.id} 
-                className="bg-black/40 backdrop-blur-sm border border-gray-700 rounded-lg p-4 hover:bg-black/50 transition-colors"
+                className="card hover:bg-black/50 transition-colors h-[160px] flex flex-col justify-between"
               >
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="font-semibold text-amber-200">{service.serviceName}</h3>
@@ -44,7 +44,7 @@ export function ClientHistoryPage() {
                   </div>
                 </div>
                 <div className="flex items-center text-sm text-gray-300 mb-2">
-                  <Calendar className="w-4 h-4 mr-2 text-gray-400" />
+                  <Calendar className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" />
                   <span>{service.date.toLocaleDateString('pt-BR')}</span>
                 </div>
                 <div className="flex justify-between items-center">
@@ -69,12 +69,12 @@ export function ClientHistoryPage() {
           </div>
         )}
         
-        <div className="fixed bottom-6 right-6 md:hidden">
+        <div className="fixed bottom-6 right-6">
           <button 
-            onClick={() => navigate('/client')}
-            className="bg-amber-500 text-black p-3 rounded-full shadow-lg hover:bg-amber-400 transition-colors"
+            onClick={() => window.history.back()}
+            className="bg-amber-500 text-black px-4 py-2 rounded-full shadow-lg hover:bg-amber-400 transition-all duration-300"
           >
-            <ArrowLeft className="w-5 h-5" />
+            Voltar
           </button>
         </div>
       </div>

@@ -68,7 +68,7 @@ export function HistoryModal({ isOpen, onClose }: HistoryModalProps) {
         </div>
         <div className="space-y-4 overflow-y-auto pr-1 flex-grow">
           {history.map(item => (
-            <div key={item.id} className="bg-[#1f1f1f] p-4 rounded-lg border border-[#444444] hover:border-amber-500/50 transition-colors">
+            <div key={item.id} className="bg-[#1f1f1f] p-4 rounded-lg border border-[#444444] hover:border-amber-500/50 transition-colors h-[140px] flex flex-col justify-between">
               <div className="flex justify-between items-start mb-2">
                 <h4 className="font-semibold text-amber-200">{item.service}</h4>
                 <div className="flex items-center space-x-1">
@@ -77,11 +77,11 @@ export function HistoryModal({ isOpen, onClose }: HistoryModalProps) {
                 </div>
               </div>
               <div className="flex items-center text-sm text-gray-300 mb-1">
-                <Calendar className="w-4 h-4 mr-2 text-gray-400" />
+                <Calendar className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" />
                 <span>{item.date}</span>
               </div>
               <div className="flex items-center text-sm text-gray-300">
-                <User className="w-4 h-4 mr-2 text-gray-400" />
+                <User className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" />
                 <span>{item.professional}</span>
               </div>
             </div>
