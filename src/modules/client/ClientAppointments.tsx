@@ -125,20 +125,15 @@ export const ClientAppointments: React.FC = () => {
           <div className="bg-black/30 backdrop-blur-md rounded-lg p-8 text-center">
             <Calendar className="w-16 h-16 mx-auto mb-4 text-amber-400 opacity-50" />
             <p className="text-gray-300 mb-6">Você ainda não possui agendamentos.</p>
-            <button className="px-4 py-2 bg-amber-500 text-black rounded-lg font-medium hover:bg-amber-400 transition-colors">
+            <button 
+              onClick={() => navigate('/client')}
+              className="px-4 py-2 bg-amber-500 text-black rounded-lg font-medium hover:bg-amber-400 transition-colors"
+            >
               Agendar Agora
             </button>
           </div>
         )}
         
-        <div className="fixed bottom-6 right-6">
-          <button 
-            onClick={() => window.history.back()}
-            className="bg-amber-500 text-black px-4 py-2 rounded-full shadow-lg hover:bg-amber-400 transition-colors"
-          >
-            Voltar
-          </button>
-        </div>
       </div>
     </div>
   );

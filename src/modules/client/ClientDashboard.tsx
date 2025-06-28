@@ -96,7 +96,7 @@ export const ClientDashboard: FC = () => {
           
           <div className="space-y-3">
             {/* Sample appointments - replace with real data */}
-            <div className="bg-black/30 rounded-lg p-4 border border-gray-700">
+            <div className="bg-black/30 rounded-lg p-4 border border-gray-700 hover:border-amber-500/50 transition-all">
               <div className="flex justify-between items-start">
                 <div>
                   <h3 className="font-medium text-amber-200">Corte + Barba</h3>
@@ -109,7 +109,7 @@ export const ClientDashboard: FC = () => {
               </div>
             </div>
             
-            <div className="bg-black/30 rounded-lg p-4 border border-gray-700">
+            <div className="bg-black/30 rounded-lg p-4 border border-gray-700 hover:border-amber-500/50 transition-all">
               <div className="flex justify-between items-start">
                 <div>
                   <h3 className="font-medium text-amber-200">Barba</h3>
