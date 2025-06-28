@@ -10,9 +10,9 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity overflow-hidden">
-      <div className="bg-[#303030] rounded-lg p-6 max-w-md w-full border border-[#444444] text-white max-h-[90vh] flex flex-col">
-        <div className="flex justify-between items-center mb-6">
+    <div className="client-modal">
+      <div className="client-modal-content">
+        <div className="client-modal-header">
           <h3 className="text-xl font-bold flex items-center">
             <Calendar className="w-5 h-5 mr-2 text-amber-400" />
             Agendar Horário
@@ -21,7 +21,7 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
             <X className="w-6 h-6" />
           </button>
         </div>
-        <form className="space-y-5 overflow-y-auto pr-1 flex-grow">
+        <form className="space-y-5 client-modal-body">
           <div className="relative">
             <label className="flex items-center text-sm font-medium text-gray-300 mb-2">
               <Scissors className="w-4 h-4 mr-2 text-amber-400" />
@@ -98,7 +98,7 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
           </div>
         </form>
         
-        <div className="pt-4 mt-4 border-t border-gray-700">
+        <div className="client-modal-footer">
           <button
             type="button"
             className="w-full bg-amber-500 text-black py-3 rounded-lg font-medium hover:bg-amber-400 transition-colors"

@@ -50,7 +50,7 @@ export const ClientAppointments: React.FC = () => {
         </div>
 
         {appointments.length > 0 ? (
-          <div className="overflow-x-auto max-h-[calc(100vh-150px)] overflow-y-auto scrollbar-thin rounded-lg bg-black/30 backdrop-blur-md p-4">
+          <div className="overflow-x-auto max-h-[calc(100vh-150px)] overflow-y-auto rounded-lg bg-black/30 backdrop-blur-md p-4">
             <div className="hidden md:block">
               <table className="min-w-full text-sm">
                 <thead className="bg-black/50 text-white">
@@ -90,7 +90,7 @@ export const ClientAppointments: React.FC = () => {
             {/* Mobile view */}
             <div className="md:hidden space-y-4">
               {appointments.map(apt => (
-                <div key={apt.id} className="appointment-card">
+                <div key={apt.id} className="appointment-card hover:border-amber-500/50">
                   <div className="flex justify-between items-start mb-2">
                     <h4 className="font-semibold text-amber-200 flex items-center">
                       <Scissors className="w-4 h-4 mr-2 text-amber-400 flex-shrink-0" />
@@ -124,7 +124,7 @@ export const ClientAppointments: React.FC = () => {
         ) : (
           <div className="bg-black/30 backdrop-blur-md rounded-lg p-8 text-center">
             <Calendar className="w-16 h-16 mx-auto mb-4 text-amber-400 opacity-50" />
-            <p className="text-gray-300 mb-4">Você ainda não possui agendamentos.</p>
+            <p className="text-gray-300 mb-6">Você ainda não possui agendamentos.</p>
             <button className="px-4 py-2 bg-amber-500 text-black rounded-lg font-medium hover:bg-amber-400 transition-colors">
               Agendar Agora
             </button>

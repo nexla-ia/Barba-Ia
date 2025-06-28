@@ -86,9 +86,9 @@ export const ClientDashboard: FC = () => {
               <Calendar className="w-5 h-5 mr-2 text-amber-400" />
               Próximos Agendamentos
             </h2>
-            <button 
+            <button
               onClick={() => navigate('/client/appointments')}
-              className="text-amber-400 hover:text-amber-300 flex items-center text-sm font-medium"
+              className="view-all-link"
             >
               Ver todos <ArrowRight className="w-4 h-4 ml-1" />
             </button>
@@ -131,9 +131,9 @@ export const ClientDashboard: FC = () => {
               <History className="w-5 h-5 mr-2 text-amber-400" />
               Histórico de Serviços
             </h2>
-            <button 
-              onClick={() => navigate('/client/history')} 
-              className="text-amber-400 hover:text-amber-300 flex items-center text-sm font-medium"
+            <button
+              onClick={() => navigate('/client/history')}
+              className="view-all-link"
             >
               Ver todos <ArrowRight className="w-4 h-4 ml-1" />
             </button>

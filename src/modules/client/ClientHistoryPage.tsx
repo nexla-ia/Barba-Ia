@@ -30,9 +30,9 @@ export function ClientHistoryPage() {
         </div>
         
         {client && client.serviceHistory.length > 0 ? (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-h-[calc(100vh-150px)] overflow-y-auto pr-1 service-boxes">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-h-[calc(100vh-150px)] overflow-y-auto pr-1">
             {client.serviceHistory.map(service => (
-              <div key={service.id} className="history-card h-[160px]">
+              <div key={service.id} className="history-card hover:border-amber-500/50">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="font-semibold text-amber-200">{service.serviceName}</h3>
                   <div className="flex items-center space-x-1 bg-amber-900/40 px-2 py-1 rounded-full">
@@ -56,7 +56,7 @@ export function ClientHistoryPage() {
         ) : (
           <div className="bg-black/30 backdrop-blur-md rounded-lg p-8 text-center">
             <History className="w-16 h-16 mx-auto mb-4 text-amber-400 opacity-50" />
-            <p className="text-gray-300 mb-4">Você ainda não realizou nenhum serviço.</p>
+            <p className="text-gray-300 mb-6">Você ainda não realizou nenhum serviço.</p>
             <button 
               onClick={() => navigate('/client')}
               className="px-4 py-2 bg-amber-500 text-black rounded-lg font-medium hover:bg-amber-400 transition-colors"

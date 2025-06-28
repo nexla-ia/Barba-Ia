@@ -104,8 +104,7 @@ export function ClientProfilePage() {
           </div>
           
           <div className="bg-black/40 backdrop-blur-sm rounded-xl border border-gray-700 overflow-hidden">
-            {/* Profile Header */}
-            <div className="p-6 border-b border-gray-700 flex items-center space-x-4">
+            <div className="p-6 border-b border-gray-700 flex items-center space-x-6">
               <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center text-black text-2xl font-bold">
                 {formData.fullName.charAt(0).toUpperCase()}
               </div>
@@ -116,7 +115,7 @@ export function ClientProfilePage() {
             </div>
             
             {/* Profile Content */}
-            <div className="p-6">
+            <div className="p-6 space-y-6">
               {isEditing ? (
                 <form className="space-y-4">
                   <div>
@@ -216,10 +215,10 @@ export function ClientProfilePage() {
                   </div>
                 </form>
               ) : (
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-3">
-                      <div className="flex items-start space-x-3">
+                <div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <div className="flex items-start space-x-4">
                         <User className="w-5 h-5 text-amber-400 mt-0.5" />
                         <div>
                           <p className="text-sm text-gray-400">Nome Completo</p>
@@ -227,7 +226,7 @@ export function ClientProfilePage() {
                         </div>
                       </div>
                       
-                      <div className="flex items-start space-x-3">
+                      <div className="flex items-start space-x-4">
                         <Phone className="w-5 h-5 text-amber-400 mt-0.5" />
                         <div>
                           <p className="text-sm text-gray-400">Telefone</p>
@@ -236,8 +235,8 @@ export function ClientProfilePage() {
                       </div>
                     </div>
                     
-                    <div className="space-y-3">
-                      <div className="flex items-start space-x-3">
+                    <div className="space-y-4">
+                      <div className="flex items-start space-x-4">
                         <Mail className="w-5 h-5 text-amber-400 mt-0.5" />
                         <div>
                           <p className="text-sm text-gray-400">E-mail</p>
@@ -245,7 +244,7 @@ export function ClientProfilePage() {
                         </div>
                       </div>
                       
-                      <div className="flex items-start space-x-3">
+                      <div className="flex items-start space-x-4">
                         <MapPin className="w-5 h-5 text-amber-400 mt-0.5" />
                         <div>
                           <p className="text-sm text-gray-400">Endereço</p>
@@ -260,18 +259,18 @@ export function ClientProfilePage() {
             </div>
             
             {/* Actions */}
-            <div className="p-6 border-t border-gray-700 flex justify-end space-x-3">
+            <div className="p-6 border-t border-gray-700 flex justify-end space-x-4">
               {isEditing ? (
                 <>
                   <button 
                     onClick={() => setIsEditing(false)} 
-                    className="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors"
+                    className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors"
                   >
                     Cancelar
                   </button>
                   <button 
                     onClick={handleSave} 
-                    className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-black rounded-lg transition-colors flex items-center"
+                    className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black rounded-lg transition-colors flex items-center"
                   >
                     <Save className="w-4 h-4 mr-2" />
                     Salvar Alterações
@@ -280,7 +279,7 @@ export function ClientProfilePage() {
               ) : (
                 <button 
                   onClick={() => setIsEditing(true)} 
-                  className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-black rounded-lg transition-colors flex items-center"
+                  className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black rounded-lg transition-colors flex items-center"
                 >
                   <EditIcon className="w-4 h-4 mr-2" />
                   Editar Perfil
