@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, User, Phone, Mail, Lock, Save, Edit as EditIcon } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useClient } from '../../contexts/ClientContext';
 
@@ -46,71 +46,133 @@ export function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity">
-      <div className="bg-[#303030] rounded-lg p-6 max-w-md w-full text-white space-y-4">
-        <div className="flex justify-between items-center">
-          <h3 className="text-xl font-bold">Meu Perfil</h3>
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity overflow-hidden">
+      <div className="bg-[#303030] rounded-lg p-6 max-w-md w-full text-white max-h-[90vh] flex flex-col">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-bold flex items-center">
+            <User className="w-5 h-5 mr-2 text-amber-400" />
+            Meu Perfil
+          </h3>
           <button onClick={onClose} className="text-gray-400 hover:text-white">
             <X className="w-6 h-6" />
           </button>
         </div>
-        {isEditing ? (
-          <div className="space-y-3">
-            <div>
-              <label className="block text-sm font-medium">Nome Completo</label>
-              <input
-                type="text"
-                value={formData.fullName}
-                onChange={e => setFormData({ ...formData, fullName: e.target.value })}
-                className="w-full mt-1 px-3 py-2 rounded bg-[#333333] border border-[#444444] text-white"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Telefone</label>
-              <input
-                type="tel"
-                value={formData.phone}
-                onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full mt-1 px-3 py-2 rounded bg-[#333333] border border-[#444444] text-white"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">E-mail</label>
-              <input
-                type="email"
-                value={formData.email}
-                onChange={e => setFormData({ ...formData, email: e.target.value })}
-                className="w-full mt-1 px-3 py-2 rounded bg-[#333333] border border-[#444444] text-white"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Senha</label>
-              <input
-                type="password"
-                value={formData.password}
-                onChange={e => setFormData({ ...formData, password: e.target.value })}
-                className="w-full mt-1 px-3 py-2 rounded bg-[#333333] border border-[#444444] text-white"
-              />
-            </div>
-          </div>
-        ) : (
-          <div className="space-y-2 text-sm">
-            <p><strong>Nome:</strong> {formData.fullName}</p>
-            <p><strong>Telefone:</strong> {formData.phone}</p>
-            <p><strong>E-mail:</strong> {formData.email}</p>
-          </div>
-        )}
-        <div className="flex justify-end gap-2 pt-2">
+        
+        <div className="overflow-y-auto pr-1 flex-grow">
           {isEditing ? (
-            <>
-              <button onClick={() => setIsEditing(false)} className="px-4 py-2 rounded bg-gray-600 text-white">Cancelar</button>
-              <button onClick={handleSave} className="px-4 py-2 rounded bg-amber-500 text-black">Salvar</button>
-            </>
+            <div className="space-y-4">
+              <div>
+                <label className="flex items-center text-sm font-medium mb-1">
+                  <User className="w-4 h-4 mr-2 text-gray-400" />
+                  Nome Completo
+                </label>
+                <input
+                  type="text"
+                  value={formData.fullName}
+                  onChange={e => setFormData({ ...formData, fullName: e.target.value })}
+                  className="w-full px-4 py-3 rounded-lg bg-[#222222] border border-[#444444] text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                />
+              </div>
+              <div>
+                <label className="flex items-center text-sm font-medium mb-1">
+                  <Phone className="w-4 h-4 mr-2 text-gray-400" />
+                  Telefone
+                </label>
+                <input
+                  type="tel"
+                  value={formData.phone}
+                  onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full px-4 py-3 rounded-lg bg-[#222222] border border-[#444444] text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                />
+              </div>
+              <div>
+                <label className="flex items-center text-sm font-medium mb-1">
+                  <Mail className="w-4 h-4 mr-2 text-gray-400" />
+                  E-mail
+                </label>
+                <input
+                  type="email"
+                  value={formData.email}
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-4 py-3 rounded-lg bg-[#222222] border border-[#444444] text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                />
+              </div>
+              <div>
+                <label className="flex items-center text-sm font-medium mb-1">
+                  <Lock className="w-4 h-4 mr-2 text-gray-400" />
+                  Senha
+                </label>
+                <input
+                  type="password"
+                  value={formData.password}
+                  onChange={e => setFormData({ ...formData, password: e.target.value })}
+                  className="w-full px-4 py-3 rounded-lg bg-[#222222] border border-[#444444] text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  placeholder="••••••"
+                />
+              </div>
+            </div>
           ) : (
-            <button onClick={() => setIsEditing(true)} className="px-4 py-2 rounded bg-amber-500 text-black">Editar</button>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3 p-3 bg-[#222222] rounded-lg">
+                <User className="w-5 h-5 text-amber-400" />
+                <div>
+                  <p className="text-xs text-gray-400">Nome</p>
+                  <p className="font-medium">{formData.fullName}</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3 p-3 bg-[#222222] rounded-lg">
+                <Phone className="w-5 h-5 text-amber-400" />
+                <div>
+                  <p className="text-xs text-gray-400">Telefone</p>
+                  <p className="font-medium">{formData.phone}</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3 p-3 bg-[#222222] rounded-lg">
+                <Mail className="w-5 h-5 text-amber-400" />
+                <div>
+                  <p className="text-xs text-gray-400">E-mail</p>
+                  <p className="font-medium">{formData.email}</p>
+                </div>
+              </div>
+            </div>
           )}
         </div>
-        <p className="text-sm text-gray-300">Endereço: {address}</p>
+        
+        <div className="pt-4 mt-4 border-t border-gray-700">
+          {isEditing ? (
+            <div className="flex space-x-3">
+              <button 
+                onClick={() => setIsEditing(false)} 
+                className="flex-1 py-3 bg-gray-700 text-white rounded-lg font-medium hover:bg-gray-600 transition-colors"
+              >
+                Cancelar
+              </button>
+              <button 
+                onClick={handleSave} 
+                className="flex-1 py-3 bg-amber-500 text-black rounded-lg font-medium hover:bg-amber-400 transition-colors flex items-center justify-center"
+              >
+                <Save className="w-4 h-4 mr-2" />
+                Salvar
+              </button>
+            </div>
+          ) : (
+            <div className="flex space-x-3">
+              <button 
+                onClick={onClose} 
+                className="flex-1 py-3 bg-gray-700 text-white rounded-lg font-medium hover:bg-gray-600 transition-colors"
+              >
+                Fechar
+              </button>
+              <button 
+                onClick={() => setIsEditing(true)} 
+                className="flex-1 py-3 bg-amber-500 text-black rounded-lg font-medium hover:bg-amber-400 transition-colors flex items-center justify-center"
+              >
+                <EditIcon className="w-4 h-4 mr-2" />
+                Editar
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

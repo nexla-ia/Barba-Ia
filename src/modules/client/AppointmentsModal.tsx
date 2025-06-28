@@ -1,5 +1,5 @@
 import React from 'react';
-import { X } from 'lucide-react';
+import { X, Calendar, Clock, User } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useScheduling } from '../../contexts/SchedulingContext';
 
@@ -93,26 +93,52 @@ export function AppointmentsModal({ isOpen, onClose }: AppointmentsModalProps) {
   })) : sampleAppointments;
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity">
-      <div className="bg-[#303030] rounded-lg p-6 max-w-md w-full border border-[#444444] text-white">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity overflow-hidden">
+      <div className="bg-[#303030] rounded-lg p-6 max-w-md w-full border border-[#444444] text-white max-h-[90vh] flex flex-col">
         <div className="flex justify-between items-center mb-6">
-          <h3 className="text-xl font-bold">Meus Agendamentos</h3>
+          <h3 className="text-xl font-bold flex items-center">
+            <Calendar className="w-5 h-5 mr-2 text-amber-400" />
+            Meus Agendamentos
+          </h3>
           <button onClick={onClose} className="text-gray-400 hover:text-white">
             <X className="w-6 h-6" />
           </button>
         </div>
-        <div className="space-y-4">
+        <div className="space-y-4 overflow-y-auto pr-1 flex-grow">
           {list.map(item => (
-            <div key={item.id} className="flex items-center justify-between bg-[#1f1f1f] p-4 rounded-lg">
-              <div>
-                <h4 className="font-semibold">{item.service}</h4>
-                <p className="text-sm text-gray-400">{item.date} • {item.time} • {item.barber}</p>
+            <div key={item.id} className="bg-[#1f1f1f] p-4 rounded-lg border border-[#444444] hover:border-amber-500/50 transition-colors">
+              <div className="flex justify-between items-start mb-2">
+                <h4 className="font-semibold text-amber-200">{item.service}</h4>
+                <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+                  item.status === 'confirmado' ? 'bg-green-900/60 text-green-200' :
+                  item.status === 'pendente' ? 'bg-yellow-900/60 text-yellow-200' :
+                  'bg-red-900/60 text-red-200'
+                }`}>
+                  {item.status}
+                </span>
               </div>
-              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${item.status === 'confirmado' ? 'bg-green-600' : 'bg-yellow-600'} text-white`}>
-                {item.status}
-              </span>
+              <div className="flex items-center text-sm text-gray-300 mb-1">
+                <Calendar className="w-4 h-4 mr-2 text-gray-400" />
+                <span>{item.date}</span>
+              </div>
+              <div className="flex items-center text-sm text-gray-300 mb-1">
+                <Clock className="w-4 h-4 mr-2 text-gray-400" />
+                <span>{item.time}</span>
+              </div>
+              <div className="flex items-center text-sm text-gray-300">
+                <User className="w-4 h-4 mr-2 text-gray-400" />
+                <span>{item.barber}</span>
+              </div>
             </div>
           ))}
+        </div>
+        <div className="pt-4 mt-4 border-t border-gray-700">
+          <button
+            onClick={onClose}
+            className="w-full py-3 bg-amber-500 text-black rounded-lg font-medium hover:bg-amber-400 transition-colors"
+          >
+            Fechar
+          </button>
         </div>
       </div>
     </div>
