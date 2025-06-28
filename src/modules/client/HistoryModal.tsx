@@ -55,7 +55,7 @@ export function HistoryModal({ isOpen, onClose }: HistoryModalProps) {
   ];
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity overflow-hidden">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity">
       <div className="bg-[#303030] rounded-lg p-6 max-w-md w-full border border-[#444444] text-white max-h-[90vh] flex flex-col">
         <div className="flex justify-between items-center mb-6">
           <h3 className="text-xl font-bold flex items-center">
@@ -89,7 +89,7 @@ export function HistoryModal({ isOpen, onClose }: HistoryModalProps) {
         </div>
         <div className="pt-4 mt-4 border-t border-gray-700">
           <button
-            onClick={onClose}
+            onClick={onClose} 
             className="w-full py-3 bg-amber-500 text-black rounded-lg font-medium hover:bg-amber-400 transition-colors"
           >
             Fechar

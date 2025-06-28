@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Calendar, Clock, User } from 'lucide-react';
+import { X, Calendar, Clock, User, Scissors } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useScheduling } from '../../contexts/SchedulingContext';
 
@@ -93,7 +93,7 @@ export function AppointmentsModal({ isOpen, onClose }: AppointmentsModalProps) {
   })) : sampleAppointments;
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity overflow-hidden">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity">
       <div className="bg-[#303030] rounded-lg p-6 max-w-md w-full border border-[#444444] text-white max-h-[90vh] flex flex-col">
         <div className="flex justify-between items-center mb-6">
           <h3 className="text-xl font-bold flex items-center">
@@ -108,7 +108,10 @@ export function AppointmentsModal({ isOpen, onClose }: AppointmentsModalProps) {
           {list.map(item => (
             <div key={item.id} className="bg-[#1f1f1f] p-4 rounded-lg border border-[#444444] hover:border-amber-500/50 transition-colors">
               <div className="flex justify-between items-start mb-2">
-                <h4 className="font-semibold text-amber-200">{item.service}</h4>
+                <h4 className="font-semibold text-amber-200 flex items-center">
+                  <Scissors className="w-4 h-4 mr-2 text-amber-400" />
+                  {item.service}
+                </h4>
                 <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
                   item.status === 'confirmado' ? 'bg-green-900/60 text-green-200' :
                   item.status === 'pendente' ? 'bg-yellow-900/60 text-yellow-200' :
@@ -134,7 +137,7 @@ export function AppointmentsModal({ isOpen, onClose }: AppointmentsModalProps) {
         </div>
         <div className="pt-4 mt-4 border-t border-gray-700">
           <button
-            onClick={onClose}
+            onClick={onClose} 
             className="w-full py-3 bg-amber-500 text-black rounded-lg font-medium hover:bg-amber-400 transition-colors"
           >
             Fechar

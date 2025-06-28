@@ -148,7 +148,7 @@ export const ClientDashboard: FC = () => {
                 <div>
                   <h3 className="font-medium text-amber-200">Corte de Cabelo</h3>
                   <p className="text-sm text-gray-300 mt-1">01/07/2024</p>
-                  <p className="text-xs text-gray-400 mt-1">com João Silva</p>
+                  <p className="text-xs text-gray-400 mt-1">com Maria Silva</p>
                 </div>
                 <div className="flex items-center">
                   <Star className="w-4 h-4 text-amber-400 fill-current" />
@@ -164,8 +164,8 @@ export const ClientDashboard: FC = () => {
 
         <div className="mt-auto flex justify-end pt-4">
           <button
-            onClick={logout}
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-500 to-red-700 text-white rounded-lg shadow-lg hover:from-red-600 hover:to-red-800 transition-colors"
+            onClick={logout} 
+            className="flex items-center gap-2 px-4 py-2 bg-black/40 border border-red-500/50 text-white rounded-lg shadow-lg hover:bg-black/60 transition-all duration-300"
           >
             <LogOut className="w-4 h-4" />
             Sair
