@@ -31,11 +31,11 @@ export const ClientAppointments: React.FC = () => {
       {/* Camada de overlay */}
       <div className="absolute inset-0 bg-black/50 backdrop-blur-md" />
 
-      <div className="relative p-6 space-y-6 max-w-5xl mx-auto text-white">
+      <div className="relative p-4 sm:p-6 space-y-6 max-w-5xl mx-auto text-white">
         <h1 className="text-2xl font-bold">Meus Agendamentos</h1>
 
         {appointments.length > 0 ? (
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto max-h-80 sm:max-h-[60vh] overflow-y-auto scrollbar-thin">
             <table className="min-w-full text-sm">
               <thead className="bg-gray-900 text-white">
                 <tr>
