@@ -46,7 +46,7 @@ export function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity overflow-hidden">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity">
       <div className="bg-[#303030] rounded-lg p-6 max-w-md w-full text-white max-h-[90vh] flex flex-col">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-xl font-bold flex items-center">
@@ -144,7 +144,7 @@ export function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
               <button 
                 onClick={() => setIsEditing(false)} 
                 className="flex-1 py-3 bg-gray-700 text-white rounded-lg font-medium hover:bg-gray-600 transition-colors"
-              >
+              > 
                 Cancelar
               </button>
               <button 
@@ -160,7 +160,7 @@ export function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
               <button 
                 onClick={onClose} 
                 className="flex-1 py-3 bg-gray-700 text-white rounded-lg font-medium hover:bg-gray-600 transition-colors"
-              >
+              > 
                 Fechar
               </button>
               <button 

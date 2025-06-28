@@ -83,7 +83,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } else if (email === 'client@example.com' && password === 'password') {
         const clientUser: User = {
           id: 'client-1',
-          name: 'Client User',
+          name: 'Maria Silva',
           email: 'client@example.com',
           role: 'client',
         };
