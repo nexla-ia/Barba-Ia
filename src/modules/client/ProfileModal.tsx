@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, User, Phone, Mail, Lock, Save, Edit as EditIcon } from 'lucide-react';
+import { X, User, Phone, Mail, Lock, Save, Edit as EditIcon, MessageSquare } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useClient } from '../../contexts/ClientContext';
 
@@ -58,7 +58,7 @@ export function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
           </button>
         </div>
         
-        <div className="overflow-y-auto pr-1 flex-grow">
+        <div className="overflow-y-auto pr-1 flex-grow mb-4">
           {isEditing ? (
             <div className="space-y-4">
               <div>
@@ -138,7 +138,7 @@ export function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
           )}
         </div>
         
-        <div className="pt-4 mt-4 border-t border-gray-700">
+        <div className="pt-4 border-t border-gray-700">
           {isEditing ? (
             <div className="flex space-x-3">
               <button 

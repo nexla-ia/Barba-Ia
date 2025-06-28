@@ -1,5 +1,5 @@
 import React, { useState, FC } from 'react';
-import { Calendar, Clock, User, Scissors, History, Star, LogOut, ChevronRight } from 'lucide-react';
+import { Calendar, Clock, User, History, Star, LogOut, ChevronRight, ArrowRight } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { BookingModal } from './BookingModal';
 import { AppointmentsModal } from './AppointmentsModal';
@@ -90,8 +90,7 @@ export const ClientDashboard: FC = () => {
               onClick={() => navigate('/client/appointments')}
               className="text-amber-400 hover:text-amber-300 flex items-center text-sm font-medium"
             >
-              Ver todos
-              <ChevronRight className="w-4 h-4 ml-1" />
+              Ver todos <ArrowRight className="w-4 h-4 ml-1" />
             </button>
           </div>
           
@@ -136,8 +135,7 @@ export const ClientDashboard: FC = () => {
               onClick={() => navigate('/client/history')} 
               className="text-amber-400 hover:text-amber-300 flex items-center text-sm font-medium"
             >
-              Ver todos
-              <ChevronRight className="w-4 h-4 ml-1" />
+              Ver todos <ArrowRight className="w-4 h-4 ml-1" />
             </button>
           </div>
           
@@ -165,7 +163,7 @@ export const ClientDashboard: FC = () => {
         <div className="mt-auto flex justify-end pt-4">
           <button
             onClick={logout} 
-            className="flex items-center gap-2 px-4 py-2 bg-black/40 border border-red-500/50 text-white rounded-lg shadow-lg hover:bg-red-500 hover:border-red-600 hover:text-white transition-all duration-300"
+            className="logout-btn flex items-center gap-2 px-4 py-2"
           >
             <LogOut className="w-4 h-4" />
             Sair

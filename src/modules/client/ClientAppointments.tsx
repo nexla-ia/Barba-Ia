@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useScheduling } from '../../contexts/SchedulingContext';
-import { Calendar, Clock, User, ArrowLeft } from 'lucide-react';
+import { Calendar, Clock, User, ArrowLeft, Scissors } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 interface Appointment {
@@ -90,12 +90,12 @@ export const ClientAppointments: React.FC = () => {
             {/* Mobile view */}
             <div className="md:hidden space-y-4">
               {appointments.map(apt => (
-                <div key={apt.id} className="bg-black/40 rounded-lg p-4 border border-gray-700">
+                <div key={apt.id} className="appointment-card">
                   <div className="flex justify-between items-start mb-2">
-                    <div className="flex items-center">
-                      <Clock className="w-4 h-4 text-amber-400 mr-2 flex-shrink-0" />
-                      <span className="text-amber-200 font-medium">{apt.date} • {apt.startTime}</span>
-                    </div>
+                    <h4 className="font-semibold text-amber-200 flex items-center">
+                      <Scissors className="w-4 h-4 mr-2 text-amber-400 flex-shrink-0" />
+                      {apt.services.map(s => s.name).join(', ')}
+                    </h4>
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                       apt.status === 'confirmed' ? 'bg-green-900/60 text-green-200' :
                       apt.status === 'pending' ? 'bg-yellow-900/60 text-yellow-200' :
@@ -105,8 +105,13 @@ export const ClientAppointments: React.FC = () => {
                       {apt.status}
                     </span>
                   </div>
-                  <div className="mb-2">
-                    <h3 className="font-medium text-white">{apt.services.map(s => s.name).join(', ')}</h3>
+                  <div className="flex items-center text-sm text-gray-300 mb-1">
+                    <Calendar className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" />
+                    <span>{apt.date}</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-300 mb-1">
+                    <Clock className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" />
+                    <span>{apt.startTime}</span>
                   </div>
                   <div className="flex items-center text-sm text-gray-300">
                     <User className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" />

@@ -32,10 +32,7 @@ export function ClientHistoryPage() {
         {client && client.serviceHistory.length > 0 ? (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-h-[calc(100vh-150px)] overflow-y-auto pr-1 service-boxes">
             {client.serviceHistory.map(service => (
-              <div 
-                key={service.id} 
-                className="card hover:bg-black/50 transition-colors h-[160px] flex flex-col justify-between"
-              >
+              <div key={service.id} className="history-card h-[160px]">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="font-semibold text-amber-200">{service.serviceName}</h3>
                   <div className="flex items-center space-x-1 bg-amber-900/40 px-2 py-1 rounded-full">
